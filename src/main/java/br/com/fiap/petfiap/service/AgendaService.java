@@ -13,8 +13,12 @@ import java.util.List;
 @Service
 public class AgendaService {
 
-    @Autowired
     private AtendimentoRepository repository;
+
+    @Autowired
+    public AgendaService(AtendimentoRepository repository) {
+        this.repository = repository;
+    }
 
     // Agenda um novo atendimento: recusa horario ja ocupado pelo mesmo pet.
     public Atendimento agendar(Atendimento novo) {
