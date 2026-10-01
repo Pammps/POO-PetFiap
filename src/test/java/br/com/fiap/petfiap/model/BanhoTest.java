@@ -47,4 +47,16 @@ public class BanhoTest {
         // Assert
         assertEquals(60.0, preco, 0.001);
     }
+
+    @Test
+    public void deveCancelarAtendimentoAgendado() {
+        // Arrange
+        Banho banho = banhoDoRex();
+
+        // Act
+        banho.cancelar();
+
+        // Assert
+        assertEquals("CANCELADO", banho.getStatus());
+    }
 }
