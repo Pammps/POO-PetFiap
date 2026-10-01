@@ -18,6 +18,10 @@ public class AgendaService {
 
     // Agenda um novo atendimento: recusa horario ja ocupado pelo mesmo pet.
     public Atendimento agendar(Atendimento novo) {
+        if (novo.getDataHora().isBefore(java.time.LocalDateTime.now())) {
+            throw new IllegalArgumentException("Data e hora do atendimento nao podem estar no passado");
+        }
+
         List<Atendimento> doPet = repository.findByPetNome(novo.getPetNome());
 
         for (Atendimento a : doPet) {
